@@ -8,8 +8,8 @@ public class UserManagerImpl implements UserManager {
 	private Datastore datastore = new DatastoreImpl();
 	
 	@Override
-	public void addOrUpdateUser(User user) {
-		datastore.saveUser(user);
+	public User addOrUpdateUser(User user) {
+		return datastore.saveUser(user);
 	}
 
 	@Override
@@ -24,4 +24,5 @@ public class UserManagerImpl implements UserManager {
 	public void setDatastore(Datastore datastore) {
 		this.datastore = datastore;
 	}
+
 }

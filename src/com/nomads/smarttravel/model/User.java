@@ -15,6 +15,7 @@ public class User {
 	private String emailId;
 	private String contact;
 	private List<Skill> skills;
+	private List<String> travelInfoIds;
 	private Vote vote;
 	private List<String> comments;
 	private List<String> pendingEvents;
@@ -83,6 +84,13 @@ public class User {
 	}
 	public void setApprovedEvents(List<String> approvedEvents) {
 		this.approvedEvents = approvedEvents;
+	}
+
+	public List<String> getTravelInfoIds() {
+		return travelInfoIds;
+	}
+	public void setTravelInfoIds(List<String> travelInfoIds) {
+		this.travelInfoIds = travelInfoIds;
 	}
 
 	private static class Vote {

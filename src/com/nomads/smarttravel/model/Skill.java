@@ -6,7 +6,6 @@ public class Skill {
 	private Expertise expertise;
 	
 	public Skill(String tag, Expertise expertise) {
-		super();
 		this.tag = tag;
 		this.expertise = expertise;
 	}

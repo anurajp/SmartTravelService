@@ -9,9 +9,10 @@ public class EventManagerImpl implements EventManager {
 	private PostActivityExecutor postActivityExecutor = new PostActivityExecutorImpl();
 	
 	@Override
-	public void addOrUpdateEvent(Event event) {
-		datastore.saveEvent(event);
+	public Event addOrUpdateEvent(Event event) {
+		Event ret = datastore.saveEvent(event);
 		postActivityExecutor.update(event);
+		return ret;
 	}
 	
 	@Override

@@ -3,6 +3,7 @@
  */
 package com.nomads.smarttravel.controller;
 
+import com.nomads.smarttravel.model.TravelInfo;
 import com.nomads.smarttravel.model.User;
 
 /**
@@ -10,6 +11,6 @@ import com.nomads.smarttravel.model.User;
  *
  */
 public interface UserManager {
-	void addOrUpdateUser(User user);
+	User addOrUpdateUser(User user);
 	User getUser(String userId);
 }

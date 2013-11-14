@@ -3,6 +3,7 @@ package com.nomads.smarttravel.datastore;
 import javax.jdo.PersistenceManager;
 
 import com.nomads.smarttravel.model.Event;
+import com.nomads.smarttravel.model.TravelInfo;
 import com.nomads.smarttravel.model.User;
 //import java.util.logging.Logger;
 
@@ -74,10 +75,10 @@ public class DatastoreImpl implements Datastore{
 	}*/
 
 	@Override
-	public void saveUser(User user) {
+	public User saveUser(User user) {
 		try {
 			pm = PMF.get().getPersistenceManager();
-			pm.makePersistent(user);
+			return pm.makePersistent(user);
 		} finally {
 			pm.close();
 		}
@@ -94,10 +95,10 @@ public class DatastoreImpl implements Datastore{
 	}
 
 	@Override
-	public void saveEvent(Event event) {
+	public Event saveEvent(Event event) {
 		try {
 			pm = PMF.get().getPersistenceManager();
-			pm.makePersistent(event);
+			return pm.makePersistent(event);
 		} finally {
 			pm.close();
 		}
@@ -109,6 +110,27 @@ public class DatastoreImpl implements Datastore{
 		pm = PMF.get().getPersistenceManager();
 		try {
 			return pm.getObjectById(Event.class, eventId);
+		} finally {
+			pm.close();
+		}
+	}
+
+	@Override
+	public TravelInfo saveTravelInfo(TravelInfo travelInfo) {
+		try {
+			pm = PMF.get().getPersistenceManager();
+			return pm.makePersistent(travelInfo);
+		} finally {
+			pm.close();
+		}
+		
+	}
+
+	@Override
+	public TravelInfo retrieveTravelInfo(String travelInfoId) {
+		pm = PMF.get().getPersistenceManager();
+		try {
+			return pm.getObjectById(TravelInfo.class, travelInfoId);
 		} finally {
 			pm.close();
 		}

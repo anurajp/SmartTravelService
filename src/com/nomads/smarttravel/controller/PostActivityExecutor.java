@@ -4,6 +4,7 @@
 package com.nomads.smarttravel.controller;
 
 import com.nomads.smarttravel.model.Event;
+import com.nomads.smarttravel.model.TravelInfo;
 import com.nomads.smarttravel.model.User;
 
 /**
@@ -14,4 +15,6 @@ public interface PostActivityExecutor {
 	void update(User user, Event event);
 
 	void update(Event event);
+
+	void update(TravelInfo travelInfo);
 }
