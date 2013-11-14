@@ -5,21 +5,40 @@ package com.nomads.smarttravel.model;
 
 import java.util.List;
 
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
 /**
  * @author anurajp
  *
  */
+
+@PersistenceCapable
 public class User {
+	@PrimaryKey
+	@Persistent
 	private String userId;
+	@Persistent
 	private String userName;
+	@Persistent
 	private String emailId;
+	@Persistent
 	private String contact;
+	@Persistent
 	private List<Skill> skills;
+	@Persistent
 	private List<String> travelInfoIds;
+	@Persistent
 	private Vote vote;
+	@Persistent
 	private List<String> comments;
+	@Persistent
 	private List<String> pendingEvents;
+	@Persistent
 	private List<String> rejectedEvents;
+	@Persistent
 	private List<String> approvedEvents;
 	
 	public String getUserId() {

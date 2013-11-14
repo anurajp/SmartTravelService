@@ -14,20 +14,19 @@ import com.nomads.smarttravel.model.User;
 public class PostActivityExecutorImpl implements PostActivityExecutor {
 
 	@Override
-	public void update(User user, Event event) {
-		
+	public void update(User user, Event event, String authToken) {
+		Utils.postEventToFb(user, event, authToken);
+	}
+
+	@Override
+	public void update(Event event, String authToken) {
+		Utils.postEventToFb(event, authToken);
 		
 	}
 
 	@Override
-	public void update(Event event) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update(TravelInfo travelInfo) {
-		// TODO Auto-generated method stub
+	public void update(TravelInfo travelInfo, String authToken) {
+		Utils.postEventToFb(travelInfo, authToken);
 		
 	}
 

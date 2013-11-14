@@ -6,21 +6,40 @@ package com.nomads.smarttravel.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
 /**
  * @author anurajp
  *
  */
+@PersistenceCapable
 public class Event {
+	@PrimaryKey
+	@Persistent(valueStrategy=IdGeneratorStrategy.IDENTITY)
 	private String eventId;
+	@Persistent
 	private String eventName;
+	@Persistent
 	private String createdByUserId;
+	@Persistent
 	private Date startDate;
+	@Persistent
 	private Date endDate;
+	@Persistent
 	private List<Skill> skills;
+	@Persistent
 	private String compensation;
+	@Persistent
 	private List<String> pendingUsers;
+	@Persistent
 	private List<String> rejectedUsers;
+	@Persistent
 	private List<String> approvedUsers;
+	@Persistent
+	private String location;
 	
 	public String getEventId() {
 		return eventId;
@@ -81,6 +100,12 @@ public class Event {
 	}
 	public void setCreatedByUserId(String createdByUserId) {
 		this.createdByUserId = createdByUserId;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
 	}
 
 }

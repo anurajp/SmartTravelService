@@ -29,7 +29,8 @@ public class AddTravelServlet {
 			throws IOException {
 		String travelInfoJson = (String) req.getAttribute("travelInfoJson");
 		TravelInfo travelInfo = new Gson().fromJson(travelInfoJson, TravelInfo.class);
-		travelInfo = travelInfoManager.addTravelInfo(travelInfo);
+		String authToken = (String) req.getAttribute("eventJson");
+		travelInfo = travelInfoManager.addTravelInfo(travelInfo, authToken);
 		User user = userManager.getUser(travelInfo.getUserId());
 		List<String> travelInfos = user.getTravelInfoIds();
 		travelInfos.add(travelInfo.getTravelId());

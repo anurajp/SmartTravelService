@@ -1,10 +1,22 @@
 package com.nomads.smarttravel.model;
 
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
+@PersistenceCapable
 public class TravelInfo {
+	@PrimaryKey
+	@Persistent(valueStrategy=IdGeneratorStrategy.IDENTITY)
 	private String travelId;
+	@Persistent
 	private long startTime;
+	@Persistent
 	private long endTime;
+	@Persistent
 	private long place;
+	@Persistent
 	private String userId;
 	
 	public long getStartTime() {

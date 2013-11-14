@@ -12,9 +12,9 @@ import com.nomads.smarttravel.model.User;
  *
  */
 public interface PostActivityExecutor {
-	void update(User user, Event event);
+	void update(User user, Event event, String authToken);
 
-	void update(Event event);
+	void update(Event event, String authToken);
 
-	void update(TravelInfo travelInfo);
+	void update(TravelInfo travelInfo, String authToken);
 }

@@ -17,20 +17,20 @@ public class ActivityManagerImpl implements ActivityManager {
 	private PostActivityExecutor postActivityExecutor = new PostActivityExecutorImpl();
 	
 	@Override
-	public void eventActionOnUser(String eventId, String userId, Action action) {
+	public void eventActionOnUser(String eventId, String userId, Action action, String fbAuthToken) {
 		User user = userManager.getUser(userId);
 		Event event = eventManager.getEvent(eventId);
-		update(user, event, action);
+		update(user, event, action, fbAuthToken);
 	}
 	
 	@Override
-	public void userActionOnEvent(String eventId, String userId, Action action) {
+	public void userActionOnEvent(String eventId, String userId, Action action, String fbAuthToken) {
 		User user = userManager.getUser(userId);
 		Event event = eventManager.getEvent(eventId);
-		update(user, event, action);
+		update(user, event, action, fbAuthToken);
 	}
 	
-	private void update(User user, Event event, Action action) {
+	private void update(User user, Event event, Action action, String fbAuthToken) {
 		String userId = user.getUserId();
 		String eventId = event.getEventId();
 		if(action == Action.ACCEPT) {
@@ -48,8 +48,8 @@ public class ActivityManagerImpl implements ActivityManager {
 			user.getPendingEvents().add(eventId);
 		}
 		userManager.addOrUpdateUser(user);
-		eventManager.addOrUpdateEvent(event);
-		postActivityExecutor.update(user, event);
+		eventManager.addOrUpdateEvent(event, fbAuthToken);
+		postActivityExecutor.update(user, event, fbAuthToken);
 	}
 
 }

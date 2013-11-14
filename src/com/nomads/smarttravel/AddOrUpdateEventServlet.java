@@ -14,9 +14,10 @@ public class AddOrUpdateEventServlet {
 	private EventManager eventManager = new EventManagerImpl();
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		String eventJson = (String) req.getAttribute("eventJson");
+		String eventJson = (String) req.getAttribute("authToken");
+		String authToken = (String) req.getAttribute("eventJson");
 		Event event = new Gson().fromJson(eventJson, Event.class);
-		event = eventManager.addOrUpdateEvent(event);
+		event = eventManager.addOrUpdateEvent(event, authToken);
 		resp.setContentType("text/plain");
 		
 	}

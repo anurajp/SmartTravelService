@@ -23,6 +23,7 @@ public class AddUserEventRelation {
 		String userId = (String) req.getAttribute("userId");
 		String eventId = (String) req.getAttribute("eventId");
 		Action action = (Action) req.getAttribute("action");
-		activityManager.eventActionOnUser(eventId, userId, action);
+		String authToken = (String) req.getAttribute("eventJson");
+		activityManager.eventActionOnUser(eventId, userId, action, authToken);
 	}
 }

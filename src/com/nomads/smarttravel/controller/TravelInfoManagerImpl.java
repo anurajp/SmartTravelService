@@ -9,9 +9,9 @@ public class TravelInfoManagerImpl implements TravelInfoManager {
 	private PostActivityExecutor postActivityExecutor = new PostActivityExecutorImpl();
 	
 	@Override
-	public TravelInfo addTravelInfo(TravelInfo travelInfo) {
+	public TravelInfo addTravelInfo(TravelInfo travelInfo, String authToken) {
 		TravelInfo ret = datastore.saveTravelInfo(travelInfo);
-		postActivityExecutor.update(travelInfo);
+		postActivityExecutor.update(travelInfo, authToken);
 		return ret;
 	}
 

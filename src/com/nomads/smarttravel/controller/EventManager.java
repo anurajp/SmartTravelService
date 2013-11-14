@@ -10,6 +10,6 @@ import com.nomads.smarttravel.model.Event;
  *
  */
 public interface EventManager {
-	Event addOrUpdateEvent(Event event);
+	Event addOrUpdateEvent(Event event, String authToken);
 	Event getEvent(String eventId);
 }
